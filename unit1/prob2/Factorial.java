@@ -10,7 +10,7 @@ public class Factorial {
         // "factorial" is set to 1
         int number, factorial = 1;
         
-        System.out.println("Input a number >=0 and <= 12");
+        System.out.println("Input a number >=0 and <=12");
 
         // Create a new Scanner object using System.in
         // This object allows us to get keyboard input
