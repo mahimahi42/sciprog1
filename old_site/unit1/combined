@@ -1,0 +1,220 @@
+// PROBLEM 1
+public class Hello_World {
+    public static void main(String[] args) {
+        System.out.println("Hello, world!");
+    }
+}
+
+// PROBLEM 2
+import java.util.Scanner;
+
+/**
+ * This program computes the factorial of an input integer >=0 and <=12
+ **/
+public class Factorial {
+    public static void main(String[] args) {
+        // Multiple assignment
+        // "number" will have no value, while
+        // "factorial" is set to 1
+        int number, factorial = 1;
+        
+        System.out.println("Input a number >=0 and <=12");
+
+        // Create a new Scanner object using System.in
+        // This object allows us to get keyboard input
+        Scanner scan = new Scanner(System.in);
+        // Give us the next Integer value inputted via the keyboard.
+        // Using nextInt() will ensure the value is an Integer.
+        number = scan.nextInt();
+
+        // Calculate the factorial using the standard algorithm
+        for (int i = 1; i <= number; i++) {
+            factorial = factorial * i;
+        }
+
+        // String concatanation
+        // println() will parse Integers into Strings (turns numbers into strings)
+        // then stick everything together into one long string.
+        System.out.println("Factorial of " + number + " = " + factorial);
+    }
+}
+
+// PROBLEM 3
+import java.text.DecimalFormat;
+
+/**
+ * This program calculates the Mexican population growth versus the US.
+ **/
+public class Population {
+    public static void main(String[] args) {
+        // "double" is a number with a decimal point with "double precision"
+        // Use it whenever you need a number with a decimal
+        // These values are in millions
+        double usa = 260, mexico = 58;
+        int time = 0;
+
+        // DecimalFormat allows us to format the printing of numbers with decimals
+        // In this case, we only want three points of precision after the decimal
+        // point
+        DecimalFormat df = new DecimalFormat("0.000");
+
+        // Now we calculate population growth per year until the Mexican population
+        // is greater than the US'.
+        while (mexico <= usa) {
+            usa *= 1.02;
+            mexico *= 1.07;
+            time++;
+            System.out.println("Year #" + time + ": Mexico = " + df.format(mexico) + " | USA = " + df.format(usa));
+        }
+        System.out.println("Time in years will be: " + time);
+    }
+}
+
+// PROBLEM 4
+import java.util.Scanner;
+
+/**
+ * This program identifies three numbers in the input which have 5 as their factor
+ * and obtains their sum, then terminates.
+ **/
+public class FactorsOf5Sum {
+    public static void main(String[] args) {
+        int sum = 0, count = 0, z;
+        System.out.println("Factors of 5 and their sum");
+        Scanner m = new Scanner(System.in);
+
+        // After we find three numbers, stop
+        while (count < 3) {
+            System.out.println("Input value");
+            z = m.nextInt();
+
+            // Check if 5 is a factor
+            // If the remainder after division is 0, then the divisor is a factor
+            if (z % 5 == 0) {
+                count++;
+                sum += z;
+                System.out.println(z + " has 5 as its factor\n");
+            }
+            // Print a blank line
+            System.out.println();
+        }
+        System.out.println("Sum of all the number with a factor of 5 is: " + sum);
+    }
+}
+
+// PROBLEM 5
+import java.util.Scanner;
+
+/**
+ * This program prints an inputted integer in reverse.
+ **/
+public class Reverse {
+    public static void main(String[] args) {
+        int number, digit;
+        System.out.println("Input a number greater than 0");
+        Scanner m = new Scanner(System.in);
+        number = m.nextInt();
+        // print() (not println()!!!!) will not add a newline to the end
+        System.out.print("The reversed number is: ");
+        // Until we process the entire number, get the last digit, print it,
+        // then remove it from the number.
+        while (number != 0) {
+            digit = number % 10;
+            System.out.print(digit);
+            number = number / 10;
+        }
+        System.out.println();
+    }
+}
+
+// PROBLEM 8
+import java.util.Scanner;
+
+/**
+ * This program will print "HIRE!" if three of five inputted values are greater than
+ * 50, and "REJECT" if not.
+ **/
+public class Type_Test {
+    public static void main(String[] args) {
+        int test = 0, count = 0, z;
+        Scanner m = new Scanner(System.in);
+
+        // Both conditions must be met
+        while (test < 5 && count < 2) {
+            System.out.println("Enter test score");
+            z = m.nextInt();
+
+            if (z >= 50) {
+                count++;
+            }
+            test++;
+        }
+
+        if (count == 2) {
+            System.out.println("HIRE!");
+        } else {
+            System.out.println("REJECT");
+        }
+    }
+}
+
+// PROBLEM 9
+import java.util.Scanner;
+
+/**
+ * This program prints out a specified amount of the Fibonacci Sequence
+ **/
+public class Fibonacci {
+    public static void main(String[] args) {
+        int a = 0, b = 1, c, count = 2;
+        System.out.println("How many Fibonacci numbers do you need?");
+        Scanner m = new Scanner(System.in);
+        int limit = m.nextInt();
+
+        // Hard code small limits
+        if (limit == 1) {
+            System.out.println("0");
+        } else if (limit == 2) {
+            System.out.println("0 1");
+        } else {
+            System.out.print(a + " " + b + " ");
+            while (count < limit) {
+                c = a + b;
+                a = b;
+                b = c;
+                count++;
+                System.out.print(c + " ");
+            }
+            System.out.println();
+        }
+    }
+}
+
+// PROBLEM 10
+import java.util.Scanner;
+
+/**
+ * This program computes and prints the nth Fibonacci term
+ **/
+public class Fibonacci {
+    public static void main(String[] args) {
+        int a = 0, b = 1, c = 0, count = 2;
+        System.out.println("Input the value of N");
+        Scanner m = new Scanner(System.in);
+        int limit = m.nextInt();
+
+        if (limit == 1) {
+            c = 0;
+        } else if (limit == 2) {
+            c = 1;
+        } else {
+            while (count < limit) {
+                c = a + b;
+                a = b;
+                b = c;
+                count++;
+            }
+        }
+        System.out.println("The #" + limit + " term in the Fibonacci Sequence is " + c);
+    }
+}
